@@ -1,0 +1,71 @@
+{
+  "name": "reac-boilerplate",
+  "version": "1.0.0",
+  "description": "description here",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "./node_modules/.bin/flow",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "start": "webpack-dev-server --config webpack.config.js --mode development",
+    "build": "NODE_ENV='development' webpack --config webpack.config.js --mode development",
+    "build-prod": "NODE_ENV='development' webpack --config webpack.config.js --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "url"
+  },
+  "author": "company",
+  "license": "ISC",
+  "homepage": "url",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "react-redux": "5.0.7",
+    "react-router-dom": "4.2.2",
+    "redux": "4.0.0",
+    "redux-thunk": "2.3.0",
+    "reselect": "3.0.1",
+    "webpack": "4.10.2",
+    "webpack-dev-server": "3.1.4"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.1",
+    "babel-loader": "7.1.4",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-flow": "6.23.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "babel-register": "6.26.0",
+    "css-loader": "^0.28.11",
+    "eslint": "4.16.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-flowtype": "2.41.0",
+    "eslint-plugin-prettier": "2.5.0",
+    "eslint-plugin-react": "7.5.1",
+    "eslint-plugin-standard": "3.0.1",
+    "flow-bin": "0.73.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "prettier": "1.10.2",
+    "remove-flow-types-loader": "1.0.0",
+    "sass": "1.5.1",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack-cli": "3.0.1"
+  }
+}

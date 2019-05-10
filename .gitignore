@@ -1,0 +1,21 @@
+dist/
+.vscode
+npm-debug.log
+dist/style.css
+.sass-cache/
+node_modules/
+coverage/
+/nbproject/private/
+.DS_Store
+
+sftp-config.json
+.ftpconfig
+deployment-config.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Webstorm config files
+.idea
