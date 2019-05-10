@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import template from './template'
+import images from './images'
 
-const reducers = { template }
+const reducers = { images }
 
 const rootReducer = combineReducers(reducers)
 

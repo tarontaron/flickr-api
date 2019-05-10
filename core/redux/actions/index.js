@@ -1,6 +1,6 @@
-export function setMessage(value) {
+export function storeImages(value) {
   return {
-    type: 'SET_MESSAGE',
+    type: 'STORE_IMAGES',
     value
   }
 }
