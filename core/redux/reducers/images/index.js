@@ -4,6 +4,7 @@ const initState = {
     dog: [],
     cat: []
   },
+  storeMessageKey: ''
 }
 
 const storeToBasket = (state, value) => {
@@ -21,10 +22,15 @@ const storeToBasket = (state, value) => {
       images: {
         ...state.images,
         photo: [ ...state.images.photo.filter(item => item.id !== photo.id)]
-      }
+      },
+      storeMessageKey: title
+    }
+  } else {
+    return {
+      ...state,
+      storeMessageKey: 'wrong'
     }
   }
-  return state
 }
 
 export default function images(state = initState, action) {
@@ -33,6 +39,8 @@ export default function images(state = initState, action) {
       return { ...state, images: {...action.value} }
     case 'STORE_TO_BASKET':
       return storeToBasket(state, action.value)
+    case 'CLEAR_MESSAGE':
+      return {...state, storeMessageKey: ''}
     default:
       return state
   }

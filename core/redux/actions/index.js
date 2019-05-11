@@ -14,3 +14,9 @@ export function storeToBasket(basketType, photo) {
     }
   }
 }
+
+export function clearMessage() {
+  return {
+    type: 'CLEAR_MESSAGE'
+  }
+}

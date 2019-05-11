@@ -3,9 +3,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import {getPhotots, getBaskets} from '../../../../selectors'
+import Snackbar from '@material-ui/core/Snackbar'
+import Button from '@material-ui/core/Button'
 
-import {storeToBasket} from '../../../../redux/actions'
+import {getPhotots, getBaskets, getStoreMessageKey} from '../../../../selectors'
+
+import {storeToBasket, clearMessage} from '../../../../redux/actions'
 
 import SingleImage from '../SingleImage'
 import Basket from '../Basket'
@@ -15,13 +18,15 @@ import './index.scss'
 
 const mapStateToProps = (state) => ({
   photos: getPhotots(state),
-  baskets: getBaskets(state)
+  baskets: getBaskets(state),
+  storeMessageKey: getStoreMessageKey(state)
 })
 
 const mapDispatchToProps = (dispatch) =>
     bindActionCreators(
       {
-        storeToBasket
+        storeToBasket,
+        clearMessage
       },
       dispatch
     )
@@ -35,13 +40,29 @@ class SearchedImages extends Component {
   openBasket = (type) => {
     this.setState({type})
   }
+
   render() {
-    const {photos, storeToBasket, baskets} = this.props
+    const {photos, storeToBasket, baskets, storeMessageKey, clearMessage} = this.props
     return (
         <React.Fragment>
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={!!storeMessageKey}
+            autoHideDuration={2000}
+            message={<span>{storeMessageKey && storeMessageKey !== 'wrong' ? `your image has been moved to ${storeMessageKey} basket` : 'Wrong Basket'} </span>}
+            action={[
+            <Button key="ok thanks" color="secondary" size="small" onClick={clearMessage}>
+              ok thanks
+            </Button>
+          ]}
+
+          />
           <div className="images-container">
             {photos && photos.map((photo, i) => (
-                <SingleImage key={i} photo={photo} storeToBasket={storeToBasket} />
+                <SingleImage showStoringMessage={this.showStoringMessage} key={i} photo={photo} storeToBasket={storeToBasket} />
             ))}
           </div>
           <div className='baskets-wrapper'>

@@ -13,3 +13,8 @@ export const getBaskets = state => {
   const imagesState = getImagesState(state)
   return imagesState.baskets
 }
+
+export const getStoreMessageKey = state => {
+  const imagesState = getImagesState(state)
+  return imagesState.storeMessageKey
+}
