@@ -2,7 +2,7 @@ import React from 'react'
 import { DropTarget } from 'react-dnd'
 import ItemTypes from '../ItemTypes'
 
-const Basket = ({name, canDrop, isOver, connectDropTarget }) => {
+const Basket = ({name, onClick, canDrop, isOver, connectDropTarget }) => {
   const isActive = canDrop && isOver
   let backgroundColor = '#222'
   if (isActive) {
@@ -13,6 +13,7 @@ const Basket = ({name, canDrop, isOver, connectDropTarget }) => {
   return (
     <div
       className='basket'
+      onClick={() => onClick(name)}
       ref={connectDropTarget}
     >
       {name}

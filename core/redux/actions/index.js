@@ -4,3 +4,13 @@ export function storeImages(value) {
     value
   }
 }
+
+export function storeToBasket(basketType, photo) {
+  return {
+    type: 'STORE_TO_BASKET',
+    value: {
+      basketType,
+      photo
+    }
+  }
+}

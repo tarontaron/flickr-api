@@ -6,7 +6,7 @@ const style = {
   border: '1px dashed gray'
 }
 
-const SingleImage = ({ photo, isDragging, connectDragSource }) => {
+const SingleImage = ({ storeToBasket, photo, isDragging, connectDragSource }) => {
   const opacity = isDragging ? 0.4 : 1
   return (
     <img src={photo.url_z} ref={connectDragSource} style={Object.assign({}, style, { opacity })} />
@@ -20,7 +20,7 @@ export default DragSource(
       const item = monitor.getItem()
       const dropResult = monitor.getDropResult()
       if (dropResult) {
-        alert(`You dropped ${item.name} into ${dropResult.name}!`)
+        props.storeToBasket(`${dropResult.name}`, props.photo)
       }
     },
   },
