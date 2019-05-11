@@ -33,9 +33,9 @@ class SearchInput extends Component {
     const api = axios.create({
       withCredentials: false
     })
-    api.get(`https://api.flickr.com/services/rest?sort=relevance&parse_tags=1&content_type=7&extras=can_comment%2Ccount_comments%2Ccount_faves%2Cdescription%2Cisfavorite%2Clicense%2Cmedia%2Cneeds_interstitial%2Cowner_name%2Cpath_alias%2Crealname%2Crotation%2Curl_c%2Curl_l%2Curl_m%2Curl_n%2Curl_q%2Curl_s%2Curl_sq%2Curl_t%2Curl_z&per_page=5&page=2&lang=en-US&text=${this.state.searchValue}&method=flickr.photos.search&csrf=1557536841%3A0wiwkwze9i6%3A95b034f5a3b498f6cc87d81216ea8672&api_key=2a9a7fe2f7a9692941f1811d99d2b343&format=json&hermes=1&hermesClient=1&reqId=e51e88e6&nojsoncallback=1`)
+    api.get(`https://api.flickr.com/services/rest?sort=relevance&parse_tags=1&content_type=7&extras=can_comment%2Ccount_comments%2Ccount_faves%2Cdescription%2Cisfavorite%2Clicense%2Cmedia%2Cneeds_interstitial%2Cowner_name%2Cpath_alias%2Crealname%2Crotation%2Curl_c%2Curl_l%2Curl_m%2Curl_n%2Curl_q%2Curl_s%2Curl_sq%2Curl_t%2Curl_z&per_page=5&page=2&lang=en-US&text=${this.state.searchValue}&method=flickr.photos.search&csrf=1557536841%3A0wiwkwze9i6%3A95b034f5a3b498f6cc87d81216ea8672&api_key=f416e40ea6c38b702f518bb6c00f1fe6&format=json&hermes=1&hermesClient=1&reqId=e51e88e6&nojsoncallback=1`)
     .then((res) => {
-      storeImages(res)
+      storeImages(res.data.photos)
     })
   }
 

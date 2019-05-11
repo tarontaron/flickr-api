@@ -1,20 +1,37 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { DragDropContextProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
+
+import {getPhotots} from '../../../../selectors'
+
+import SingleImage from '../SingleImage'
+
 import './index.scss'
+
+const mapStateToProps = (state) => ({
+  photos: getPhotots(state)
+})
 
 class SearchedImages extends Component {
   render() {
+    const {photos} = this.props
     return (
-      <div className="images-container">
-        <img src="http://www.webshutter.com/wp-content/uploads/2017/03/nkar.png" />
-        <img src="http://www.webshutter.com/wp-content/uploads/2017/03/nkar.png" />
-        <img src="http://www.webshutter.com/wp-content/uploads/2017/03/nkar.png" />
-        <img src="http://www.webshutter.com/wp-content/uploads/2017/03/nkar.png" />
-        <img src="http://www.webshutter.com/wp-content/uploads/2017/03/nkar.png" />
-      </div>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div className="images-container">
+          {photos && photos.map((photo, i) => (
+              <SingleImage key={i} photo={photo} />
+          ))}
+        </div>
+        <div className='baskets-wrapper'>
+          <div className="basket">Cat</div>
+          <div className="basket">Dog</div>
+        </div>
+      </DragDropContextProvider>
     )
   }
 }
 
-export default SearchedImages
+export default connect(mapStateToProps, null)(SearchedImages)
