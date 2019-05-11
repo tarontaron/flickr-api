@@ -1,5 +1,3 @@
-import { createSelector } from 'reselect'
-
 export const getImagesState = state => state.images
 
 export const getImages = state => getImagesState(state).images

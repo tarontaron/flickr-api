@@ -3,7 +3,6 @@
 import React, { Component } from 'react'
 import SearchInput from './SearchInput'
 import SearchedImages from './SearchedImages'
-import Baskets from './Baskets'
 import './index.scss'
 
 import { DragDropContextProvider } from 'react-dnd'
